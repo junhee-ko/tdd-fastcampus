@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class TextRefinerTest {
 
   @ParameterizedTest
-  @ValueSource(strings = {"hello  world", "hello   world", "hello    world", "hello     world"})
+  @ValueSource(strings = {"hello  world", "hello   world", "hello    world", "hello     world", "hello      world"})
   void test(String source) {
     TextRefiner textRefiner = new TextRefiner();
     String expected = "hello world";
