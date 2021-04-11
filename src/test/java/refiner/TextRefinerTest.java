@@ -17,4 +17,15 @@ class TextRefinerTest {
 
     assertEquals(expected, actual);
   }
+
+  @ParameterizedTest
+  @ValueSource(strings = {"hello\t world"})
+  void givenStringWithSpaceAndTab_whenRefined_thenGetStringWithOneSpace(String source) {
+    TextRefiner textRefiner = new TextRefiner();
+    String expected = "hello world";
+
+    String actual = textRefiner.refine(source);
+
+    assertEquals(expected, actual);
+  }
 }
