@@ -28,4 +28,15 @@ class TextRefinerTest {
 
     assertEquals(expected, actual);
   }
+
+  @ParameterizedTest
+  @ValueSource(strings = {"hello mockist"})
+  void givenStringWithBannedWords_whenRefined_thenGetStringWithMasking(String source) {
+    TextRefiner textRefiner = new TextRefiner();
+    String expected = "hello *******";
+
+    String actual = textRefiner.refine(source);
+
+    assertEquals(expected, actual);
+  }
 }
