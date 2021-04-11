@@ -8,6 +8,7 @@ public class TextRefiner {
         .replace("\t", " ")
         .replace("  ", " ")
         .replace("  ", " ")
-        .replace("  ", " ");
+        .replace("  ", " ")
+        .replace("mockist", "*******");
   }
 }
