@@ -1,8 +1,12 @@
 package refiner;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,7 +18,7 @@ class TextRefinerTest {
     TextRefiner textRefiner = new TextRefiner();
     String expected = "hello world";
 
-    String actual = textRefiner.refine(source);
+    String actual = textRefiner.refine(source, new String[]{});
 
     assertEquals(expected, actual);
   }
@@ -25,7 +29,7 @@ class TextRefinerTest {
     TextRefiner textRefiner = new TextRefiner();
     String expected = "hello world";
 
-    String actual = textRefiner.refine(source);
+    String actual = textRefiner.refine(source, new String[]{});
 
     assertEquals(expected, actual);
   }
@@ -35,7 +39,20 @@ class TextRefinerTest {
   void givenStringWithBannedWords_whenRefined_thenGetStringWithMasking(String source, String expected) {
     TextRefiner textRefiner = new TextRefiner();
 
-    String actual = textRefiner.refine(source);
+    String actual = textRefiner.refine(source, new String[]{});
+
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  void givenStringWithRandomBannedWords_whenRefined_thenGetStringWithMasking() {
+    int size = new Random().nextInt(10);
+    String bannedWord = RandomStringUtils.randomAlphabetic(size);
+    String source = "hello " + bannedWord;
+    String expected = "hello " + "*".repeat(size);
+
+    TextRefiner textRefiner = new TextRefiner();
+    String actual = textRefiner.refine(source, new String[]{bannedWord});
 
     assertEquals(expected, actual);
   }
