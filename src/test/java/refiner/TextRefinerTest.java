@@ -9,7 +9,7 @@ class TextRefinerTest {
 
   @ParameterizedTest
   @ValueSource(strings = {"hello  world", "hello   world", "hello    world", "hello     world", "hello      world"})
-  void test(String source) {
+  void givenStringWithSpace_whenRefined_thenGetStringWithOneSpace(String source) {
     TextRefiner textRefiner = new TextRefiner();
     String expected = "hello world";
 
