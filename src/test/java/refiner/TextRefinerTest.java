@@ -1,6 +1,7 @@
 package refiner;
 
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,10 +31,9 @@ class TextRefinerTest {
   }
 
   @ParameterizedTest
-  @ValueSource(strings = {"hello mockist"})
-  void givenStringWithBannedWords_whenRefined_thenGetStringWithMasking(String source) {
+  @CsvSource({"hello mockist,hello *******", "hello purist,hello ******"})
+  void givenStringWithBannedWords_whenRefined_thenGetStringWithMasking(String source, String expected) {
     TextRefiner textRefiner = new TextRefiner();
-    String expected = "hello *******";
 
     String actual = textRefiner.refine(source);
 
