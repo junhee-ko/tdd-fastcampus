@@ -9,6 +9,7 @@ public class TextRefiner {
         .replace("  ", " ")
         .replace("  ", " ")
         .replace("  ", " ")
-        .replace("mockist", "*******");
+        .replace("mockist", "*******")
+        .replace("purist", "******");
   }
 }
