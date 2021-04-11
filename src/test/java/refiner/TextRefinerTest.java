@@ -19,7 +19,7 @@ class TextRefinerTest {
   }
 
   @ParameterizedTest
-  @ValueSource(strings = {"hello\t world"})
+  @ValueSource(strings = {"hello\t world", "hello \tworld"})
   void givenStringWithSpaceAndTab_whenRefined_thenGetStringWithOneSpace(String source) {
     TextRefiner textRefiner = new TextRefiner();
     String expected = "hello world";
