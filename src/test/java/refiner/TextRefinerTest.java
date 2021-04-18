@@ -39,7 +39,7 @@ class TextRefinerTest {
   void givenStringWithBannedWords_whenRefined_thenGetStringWithMasking(String source, String expected) {
     TextRefiner textRefiner = new TextRefiner();
 
-    String actual = textRefiner.refine(source, new String[]{});
+    String actual = textRefiner.refine(source, new String[]{source.split(" ")[1]});
 
     assertEquals(expected, actual);
   }
